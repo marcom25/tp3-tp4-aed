@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        RandomGenerator randomGenerator = new RandomGenerator();
         FileManager fileManager = new FileManager("test.csv");
         Scanner input = new Scanner(System.in);
         int data;
@@ -29,12 +28,15 @@ public class App {
             ArrayList<BigInteger> arrayList = new ArrayList<BigInteger>(data);
             switch (option) {
                 case 1:
-                    // TODO
+                    VonNeumann vonNeumannGenerator = new VonNeumann(seed);
+                    for (int i = 0; i < data; ++i) {
+                        arrayList.add(vonNeumannGenerator.next());
+                    }
                     break;
                 case 2:
-                    UnixGLC generator = new UnixGLC(seed);
+                    UnixGLC unixGLCGenerator = new UnixGLC(seed);
                     for (int i = 0; i < data; ++i) {
-                        arrayList.add(generator.next());
+                        arrayList.add(unixGLCGenerator.next());
                     }
                     break;
             }

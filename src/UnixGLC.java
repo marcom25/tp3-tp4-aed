@@ -6,8 +6,8 @@ public class UnixGLC {
     private final BigInteger m = new BigInteger("" + (int) Math.pow(2, 32));
     private BigInteger seed;
 
-    public UnixGLC(BigInteger seed) {
-        this.seed = seed;
+    public UnixGLC(BigInteger firstSeed) {
+        this.seed = firstSeed;
     }
 
     public BigInteger next() {
