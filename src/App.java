@@ -28,13 +28,13 @@ public class App {
 
         System.out.print("Ingrese la semilla (maximo 10 digitos): ");
         seed = input.nextBigInteger();
-        
+
         int lengthSeed = String.valueOf(seed).length();
 
         while (lengthSeed > 10) {
             System.out.print("Error. Ingrese la semilla (maximo 10 digitos): ");
             seed = input.nextBigInteger();
-            
+
             lengthSeed = String.valueOf(seed).length();
         }
 
