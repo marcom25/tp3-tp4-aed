@@ -2,17 +2,13 @@ import java.math.BigInteger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
-
 public class App {
     public static void main(String[] args) {
         RandomGenerator randomGenerator = new RandomGenerator();
-        FileManager fileManager = new FileManager();
         Scanner input = new Scanner(System.in);
         int data;
         int option;
         BigInteger seed;
-        String fileName;
 
 
         System.out.println("Bienvenido a el programa, por favor especifique que generador quiere usar");
@@ -28,27 +24,20 @@ public class App {
         seed = input.nextBigInteger();    
        
 
-        
-
-        // System.out.println("Ingrese el nombre del archivo");
-        // fileName = input.nextLine();
-
         try {
             switch (option) {
                 case 1:
-                    for (int i = 0; i < data; i++) {
-                        randomGenerator.vonNewman(seed);
-                    }
+                        randomGenerator.vonNewman(seed, data);
                     break;
                 case 2:
                         randomGenerator.congruential(seed, data);
-                    
                     break;
             }
         } catch (InputMismatchException e) {
             System.out.println(e);
         }
         
+        input.close();
     }
 }
  
