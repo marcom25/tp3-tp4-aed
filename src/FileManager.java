@@ -9,9 +9,7 @@ import java.util.ArrayList;
 public class FileManager {
     private String fileName;
 
-    public FileManager(String filename) {
-        this.fileName = filename + ".csv";
-    }
+    
 
     public void setFileName(String fileName) {
         this.fileName = fileName + ".csv";
