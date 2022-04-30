@@ -7,11 +7,18 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class FileManager {
- 
+    private String fileName;
 
+    public FileManager(String filename) {
+        this.fileName = filename + ".csv";
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName + ".csv";
+    }
     
 
-    public ArrayList<BigInteger> read(String fileName) {
+    public ArrayList<BigInteger> read() {
         ArrayList<BigInteger> numbers = new ArrayList<BigInteger>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
@@ -28,7 +35,7 @@ public class FileManager {
         return numbers;
     }
 
-    public void write(ArrayList<BigInteger> numbers, String fileName) {
+    public void write(ArrayList<BigInteger> numbers) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 
