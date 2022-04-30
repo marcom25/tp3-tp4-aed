@@ -10,7 +10,7 @@ public class FileManager {
     private final String FILENAME;
 
     public FileManager(String filename) {
-        this.FILENAME = filename;
+        this.FILENAME = filename + ".csv";
     }
 
     public ArrayList<BigInteger> read() {

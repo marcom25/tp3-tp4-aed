@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        FileManager fileManager = new FileManager("test.csv");
         Scanner input = new Scanner(System.in);
+        String filename;
         int data;
         int option;
         BigInteger seed;
@@ -17,6 +17,11 @@ public class App {
         System.out.println("Seleccione [2] para el metodo Congruencial (Unix)");
         System.out.print("> ");
         option = input.nextInt();
+        input.nextLine();
+
+        System.out.print("Ingrese el nombre del archivo donde se guardarán los números: ");
+        filename = input.nextLine();
+        FileManager fileManager = new FileManager(filename);
 
         System.out.print("Ingrese la cantidad de numeros a generar: ");
         data = input.nextInt();
