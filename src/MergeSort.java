@@ -52,7 +52,6 @@ public class MergeSort {
             j++;
         }
 
-        System.out.println("merge: " + list);
         return list;
     }
 }
