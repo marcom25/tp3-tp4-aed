@@ -30,8 +30,8 @@ public class App {
 
         
 
-        System.out.println("Ingrese el nombre del archivo");
-        fileName = input.nextLine();
+        // System.out.println("Ingrese el nombre del archivo");
+        // fileName = input.nextLine();
 
         try {
             switch (option) {
@@ -41,9 +41,8 @@ public class App {
                     }
                     break;
                 case 2:
-                    for (int i = 0; i < data; i++) {
-                        randomGenerator.congruential(seed);
-                    }
+                        randomGenerator.congruential(seed, data);
+                    
                     break;
             }
         } catch (InputMismatchException e) {
