@@ -1,6 +1,7 @@
 import java.math.BigInteger;
 
 public class RandomGenerator {
+    FileManager fileManager = new FileManager();
 
     public void vonNewman(BigInteger seed, int data) {
         int count = 0;
@@ -21,9 +22,7 @@ public class RandomGenerator {
             
             seed = BigInteger.valueOf(Long.parseLong(subString));
 
-            System.out.println("Seed multiplied "+ (i+1) + ": " + multipliedText);
-            System.out.println("Seed "+ (i+1) + ": " + seed);
-            System.out.println();
+            
         }
     }
 
@@ -36,10 +35,10 @@ public class RandomGenerator {
         
         for (int i = 0; i < data; i++) {
             seed = (seed.multiply(a).add(c)).mod(m);
-            System.out.println("Seed: " + seed);
-            System.out.println();
+           
         }
         
     }
+    
     
 }

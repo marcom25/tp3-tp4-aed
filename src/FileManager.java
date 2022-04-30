@@ -7,16 +7,14 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class FileManager {
-    private final String FILENAME;
+ 
 
-    public FileManager(String filename) {
-        this.FILENAME = filename;
-    }
+    
 
-    public ArrayList<BigInteger> read() {
+    public ArrayList<BigInteger> read(String fileName) {
         ArrayList<BigInteger> numbers = new ArrayList<BigInteger>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(FILENAME));
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line;
 
             while ((line = reader.readLine()) != null) {
@@ -30,9 +28,9 @@ public class FileManager {
         return numbers;
     }
 
-    public void write(ArrayList<BigInteger> numbers) {
+    public void write(ArrayList<BigInteger> numbers, String fileName) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(FILENAME));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 
             for (int i = 0; i < numbers.size(); ++i) {
                 writer.write(numbers.get(i) + "\n");
