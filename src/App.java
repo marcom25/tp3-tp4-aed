@@ -40,7 +40,7 @@ public class App {
                 int lengthSeed = String.valueOf(seed).length();
 
                 while (lengthSeed > 10) {
-                    System.out.print("Error. Ingrese la semilla (maximo 10 digitos): ");
+                    System.out.print("Error. Ingrese una semilla que contenga máximo 10 digitos: ");
                     seed = input.nextBigInteger();
 
                     lengthSeed = String.valueOf(seed).length();
@@ -72,13 +72,8 @@ public class App {
                 System.out.print("> ");
                 input.nextLine();
                 fileName = input.nextLine();
-                if (Objects.equals(fileName, fileManager.getFileName())) {
-                    fileManager.setFileName(fileName);
-                    fileManager.sortedFile();
-                    System.out.println("El archivo '" + fileName + "-ordenado.csv' fue creado.");
-                }else{
-                    System.out.println("No existe el archivo csv.");
-                }
+                fileManager.setFileName(fileName);
+                fileManager.sortedFile();
             }else {
                 return;
             }
