@@ -52,37 +52,33 @@ public class FileManager {
     ArrayList<Integer> numbers = new ArrayList<Integer>();
     try {
         //  READ
-
         String filePath = "./"+ fileName + ".csv";
         File file = new File(filePath);
+
         if (file.exists()) {
-            BufferedReader reader = new BufferedReader(new FileReader("./"+ fileName + ".csv"));
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
             String line;
             while ((line = reader.readLine()) != null) {
                 numbers.add(Integer.parseInt((line.split(",")[0])));
             }
-    
             reader.close();
     
             numbers = (ArrayList<Integer>) MergeSort.sort(numbers);
 
             //  WRITE
-            String newFileName = fileName.split(".csv")[0] + "-ordenado" + ".csv";
+            String newFileName = fileName + "-ordenado.csv";
             BufferedWriter writer = new BufferedWriter(new FileWriter(newFileName));
 
             for (int i = 0; i < numbers.size(); ++i) {
                 writer.write(numbers.get(i) + "\n");
             }
-            System.out.println("El archivo '" + fileName + "-ordenado.csv' fue creado.");
+            System.out.println("El archivo '" + newFileName + "' fue creado.");
             writer.close();
         }else {
             System.out.println("El archivo '" + fileName + ".csv' no existe.");
         }
-
     } catch (IOException e) {
         e.printStackTrace();
     }
-    
   }
-  
 }
