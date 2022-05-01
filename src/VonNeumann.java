@@ -16,14 +16,23 @@ public class VonNeumann {
         multipliedText = String.valueOf(seed);
         count = multipliedText.length();
 
-        if (count % 2 == 0) {
-            subString = multipliedText.substring(count/4 , count - count/4);
-        } else {
-            subString = multipliedText.substring(count/4 , count - count/4);
+        if (multipliedText.length() >= 19) {
+            if (count % 2 == 0) {
+                subString = multipliedText.substring(5, 15);
+            } else {
+                subString = multipliedText.substring(4, 14);
+            }
+        }else {
+            if (count % 2 == 0) {
+                subString = multipliedText.substring(count/4 , count - count/4);
+            } else {
+                subString = multipliedText.substring(count/4 - 1 , count - (count/4 - 1));
+            }
         }
 
+
         this.seed = BigInteger.valueOf(Long.parseLong(subString));
-        System.out.println(seed);
+        // System.out.println(seed);
         return seed.mod(divider);
     }
 
