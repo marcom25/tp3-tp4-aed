@@ -8,20 +8,15 @@ import java.util.ArrayList;
 
 public class FileManager {
     private String fileName;
-    private String newFileName;
     
-    
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName + ".csv";
+    public String getFileName(){
+        return this.fileName;
     }
-
-    // public void setNewFileName(String newFileName) {
-        
-    //     this.newFileName = newFileName.split(".csv")[0] + "-ordenado" + ".csv";
-    // }
     
-
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+    
     public ArrayList<BigInteger> read() {
         ArrayList<BigInteger> numbers = new ArrayList<BigInteger>();
         try {
@@ -31,7 +26,6 @@ public class FileManager {
             while ((line = reader.readLine()) != null) {
                 numbers.add(new BigInteger(line.split(",")[0]));
             }
-            System.out.println(numbers);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,7 +35,7 @@ public class FileManager {
 
     public void write(ArrayList<BigInteger> numbers) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + ".csv"));
 
             for (int i = 0; i < numbers.size(); ++i) {
                 writer.write(numbers.get(i) + "\n");
@@ -57,9 +51,9 @@ public class FileManager {
     ArrayList<Integer> numbers = new ArrayList<Integer>();
     try {
         //  READ
-        BufferedReader reader = new BufferedReader(new FileReader(fileName));
-        String line;
+        BufferedReader reader = new BufferedReader(new FileReader(fileName + ".csv"));
 
+        String line;
         while ((line = reader.readLine()) != null) {
             numbers.add(Integer.parseInt((line.split(",")[0])));
         }
@@ -70,7 +64,6 @@ public class FileManager {
 
 
         //  WRITE
-
         String newFileName = fileName.split(".csv")[0] + "-ordenado" + ".csv";
         BufferedWriter writer = new BufferedWriter(new FileWriter(newFileName));
 

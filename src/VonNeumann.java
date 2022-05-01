@@ -32,7 +32,6 @@ public class VonNeumann {
 
 
         this.seed = BigInteger.valueOf(Long.parseLong(subString));
-        // System.out.println(seed);
         return seed.mod(divider);
     }
 

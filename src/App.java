@@ -2,6 +2,7 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
@@ -65,15 +66,19 @@ public class App {
                  catch (InputMismatchException e) {
                     System.out.println(e);
                 }
-
                
             }else if (option == 3) {
                 System.out.println("Ingrese el nombre del archivo para ordenar: ");
                 System.out.print("> ");
                 input.nextLine();
                 fileName = input.nextLine();
-                fileManager.setFileName(fileName);
-                fileManager.sortedFile();
+                if (Objects.equals(fileName, fileManager.getFileName())) {
+                    fileManager.setFileName(fileName);
+                    fileManager.sortedFile();
+                    System.out.println("El archivo '" + fileName + "-ordenado.csv' fue creado.");
+                }else{
+                    System.out.println("No existe el archivo csv.");
+                }
             }else {
                 return;
             }
