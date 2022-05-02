@@ -4,7 +4,7 @@ public class UnixGLC {
     private final BigInteger a = new BigInteger("1103515245");
     private final BigInteger c = new BigInteger("12345");
     private final BigInteger m = new BigInteger("" + (int) Math.pow(2, 32));
-    private BigInteger divider = new BigInteger("10001");
+    private final BigInteger divider = new BigInteger("10001");
     private BigInteger seed;
 
     public UnixGLC(BigInteger firstSeed) {

@@ -1,11 +1,11 @@
 import java.math.BigInteger;
 
 public class VonNeumann {
+    private final BigInteger divider = new BigInteger("10001");
     private BigInteger seed;
-    private BigInteger divider = new BigInteger("10001");
-    private int count;
+    private String seedString;
     private String subString;
-    private String multipliedText;
+    private int count;
 
     public VonNeumann(BigInteger firstSeed) {
         this.seed = firstSeed;
@@ -13,24 +13,24 @@ public class VonNeumann {
 
     public BigInteger next() {
         seed = seed.multiply(seed);
-        multipliedText = String.valueOf(seed);
-        count = multipliedText.length();
+        seedString = seed.toString();
+        count = seedString.length();
 
-        if (multipliedText.length() >= 19) {
+        if (seedString.length() >= 19) {
             if (count % 2 == 0) {
-                subString = multipliedText.substring(5, 15);
+                subString = seedString.substring(5, 15);
             } else {
-                subString = multipliedText.substring(4, 14);
+                subString = seedString.substring(4, 14);
             }
-        }else {
+        } else {
             if (count % 2 == 0) {
-                subString = multipliedText.substring(count/4 , count - count/4);
+                subString = seedString.substring(count / 4, count - count / 4);
             } else {
-                subString = multipliedText.substring(count/4 - 1 , count - (count/4 - 1));
+                subString = seedString.substring(count / 4 - 1, count - (count / 4 - 1));
             }
         }
 
-        this.seed = BigInteger.valueOf(Long.parseLong(subString));
+        seed = BigInteger.valueOf(Long.parseLong(subString));
         return seed.mod(divider);
     }
 

@@ -18,7 +18,7 @@ public class MergeSort {
         List<Integer> sortedLeft = sort(left);
         List<Integer> sortedRight = sort(right);
 
-        // mezclar lados
+        // unir sub-listas ordenadas
         return merge(sortedLeft, sortedRight);
     }
 
