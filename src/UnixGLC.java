@@ -1,11 +1,11 @@
 import java.math.BigInteger;
 
 public class UnixGLC {
+    private BigInteger seed;
+    // constantes unix
     private final BigInteger a = new BigInteger("1103515245");
     private final BigInteger c = new BigInteger("12345");
     private final BigInteger m = new BigInteger("" + (int) Math.pow(2, 32));
-    private final BigInteger divider = new BigInteger("10001");
-    private BigInteger seed;
 
     public UnixGLC(BigInteger firstSeed) {
         this.seed = firstSeed;
@@ -13,7 +13,7 @@ public class UnixGLC {
 
     public BigInteger next() {
         this.seed = (seed.multiply(a).add(c)).mod(m);
-        return seed.mod(divider);
+        return seed;
     }
 
     public BigInteger getSeed() {

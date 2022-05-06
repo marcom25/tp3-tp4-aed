@@ -1,37 +1,44 @@
 import java.math.BigInteger;
 
 public class VonNeumann {
-    private final BigInteger divider = new BigInteger("10001");
     private BigInteger seed;
-    private String seedString;
-    private String subString;
-    private int count;
+    private int seedDigits;
+    private BigInteger newSeed;
+    private String newSeedString;
+    private int newSeedDigits;
 
     public VonNeumann(BigInteger firstSeed) {
         this.seed = firstSeed;
     }
 
-    public BigInteger next() {
-        seed = seed.multiply(seed);
-        seedString = seed.toString();
-        count = seedString.length();
+    public BigInteger next() throws IllegalArgumentException {
+        // cantidad de digitos de la semilla
+        seedDigits = this.seed.toString().length();
 
-        if (seedString.length() >= 19) {
-            if (count % 2 == 0) {
-                subString = seedString.substring(5, 15);
-            } else {
-                subString = seedString.substring(4, 14);
-            }
-        } else {
-            if (count % 2 == 0) {
-                subString = seedString.substring(count / 4, count - count / 4);
-            } else {
-                subString = seedString.substring(count / 4 - 1, count - (count / 4 - 1));
-            }
+        if (seedDigits > 10) {
+            throw new IllegalArgumentException("semilla mayor a 10 dígitos");
         }
 
-        seed = BigInteger.valueOf(Long.parseLong(subString));
-        return seed.mod(divider);
+        newSeed = this.seed.multiply(this.seed);
+        newSeedString = newSeed.toString();
+        // cantidad de digitos del cuadrado de la semilla
+        newSeedDigits = newSeedString.length();
+
+        // si la nueva semilla tiene un digito menos
+        // que el doble de digitos de la semilla usada,
+        // le insertamos un 0 al inicio para que la cantidad
+        // de digitos sea par;
+        // asi podemos dejar la misma cantidad de digitos
+        // de un lado y del otro del numero "cortado" al medio
+        if (newSeedDigits == (seedDigits * 2) - 1) {
+            newSeedString = "0" + newSeedString;
+            newSeedDigits = newSeedString.length();
+        }
+
+        String newSeedMiddle = newSeedString.substring(newSeedDigits / 4, newSeedDigits - (newSeedDigits / 4));
+        this.seed = new BigInteger(newSeedMiddle);
+
+        return this.seed;
     }
 
     public BigInteger getSeed() {

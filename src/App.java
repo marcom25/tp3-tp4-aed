@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
+    // generar números entre 0 y LIMIT - 1
+    private static final BigInteger LIMIT = new BigInteger("10001");
+
     public static void main(String[] args) {
         FileManager fileManager = new FileManager();
 
@@ -48,12 +51,12 @@ public class App {
                     if (option == 1) {
                         VonNeumann vonNeumannGenerator = new VonNeumann(seed);
                         for (int i = 0; i < data; ++i) {
-                            list.add(vonNeumannGenerator.next());
+                            list.add(vonNeumannGenerator.next().mod(LIMIT));
                         }
                     } else {
                         UnixGLC unixGLCGenerator = new UnixGLC(seed);
                         for (int i = 0; i < data; ++i) {
-                            list.add(unixGLCGenerator.next());
+                            list.add(unixGLCGenerator.next().mod(LIMIT));
                         }
                     }
                     fileManager.write(list);
