@@ -6,6 +6,7 @@ public class VonNeumann {
     private BigInteger newSeed;
     private String newSeedString;
     private int newSeedDigits;
+    private String newSeedMiddle;
 
     public VonNeumann(BigInteger firstSeed) {
         this.seed = firstSeed;
@@ -35,7 +36,7 @@ public class VonNeumann {
             newSeedDigits = newSeedString.length();
         }
 
-        String newSeedMiddle = newSeedString.substring(newSeedDigits / 4, newSeedDigits - (newSeedDigits / 4));
+        newSeedMiddle = newSeedString.substring(newSeedDigits / 4, newSeedDigits - (newSeedDigits / 4));
         this.seed = new BigInteger(newSeedMiddle);
 
         return this.seed;
